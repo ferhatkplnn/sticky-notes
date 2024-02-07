@@ -1,20 +1,34 @@
 import PropTypes from "prop-types";
+import { useState } from "react";
+import Draggable from "react-draggable";
 
-function Note({ note }) {
+function Note({ note, index, setMode }) {
+  const [visible, setVisible] = useState(false);
+
+  const handleClick = () => {
+    setVisible(!visible);
+  };
   return (
     <>
-      <div
-        key={note.id}
-        className="note"
-        style={{
-          position: "absolute",
-          top: note.position.y,
-          left: note.position.x,
-          "--color": note.color,
-        }}
-      >
-        {note.note}
-      </div>
+      <Draggable>
+        <div
+          onMouseEnter={() => setMode(false)}
+          onMouseLeave={() => setMode(true)}
+          onClick={handleClick}
+          className="note-box-number"
+          style={{
+            position: "absolute",
+            cursor: "pointer",
+            top: note.position.y - 30,
+            left: note.position.x - 40,
+            "--color": note.color,
+          }}
+        >
+          {index + 1}
+
+          {visible && <div className="note">{note.note}</div>}
+        </div>
+      </Draggable>
     </>
   );
 }

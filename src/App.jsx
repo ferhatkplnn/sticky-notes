@@ -5,6 +5,7 @@ import { useState } from "react";
 import MouseFollowerText from "./components/MouseFollowerText";
 import Note from "./components/Note";
 import NoteAddBox from "./components/NoteAddBox";
+
 function App() {
   const screen = useRef(null);
   const [mode, setMode] = useState(false);
@@ -70,8 +71,10 @@ function App() {
       />
       {mode && <MouseFollowerText position={mousePosition} />}
 
-      {notes.map((note) => {
-        return <Note key={note.id} note={note} />;
+      {notes.map((note, index) => {
+        return (
+          <Note key={note.id} index={index} note={note} setMode={setMode} />
+        );
       })}
 
       {boxVisible && (
