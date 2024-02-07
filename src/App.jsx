@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import MouseFollowerText from "./components/MouseFollowerText";
 import Note from "./components/Note";
+import NoteBox from "./components/NoteBox";
 function App() {
   const screen = useRef(null);
   const [mode, setMode] = useState(false);
@@ -36,6 +37,7 @@ function App() {
     if (e.key === "c") {
       console.log("comment mode active");
       setMode(!mode);
+      setBoxVisible(false);
     }
   };
 
@@ -44,6 +46,8 @@ function App() {
   };
 
   const handleClick = () => {
+    if (!mode) return;
+
     setBoxPostion({
       x: position.x,
       y: position.y,
@@ -71,6 +75,8 @@ function App() {
       {notes.map((note) => {
         return <Note key={note.id} note={note} />;
       })}
+
+      {boxVisible && <NoteBox boxPostion={boxPostion} />}
     </div>
   );
 }

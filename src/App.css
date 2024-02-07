@@ -22,3 +22,9 @@
   border-radius: 5px;
   color: #fff;
 }
+
+.note-box {
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+}
