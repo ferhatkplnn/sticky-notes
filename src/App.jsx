@@ -31,8 +31,7 @@ function App() {
   }, [notes]);
 
   const handleKeyUp = (e) => {
-    if (e.key === "c") {
-      console.log("comment mode active");
+    if (e.key === "c" && !boxVisible) {
       setMode(!mode);
       setBoxVisible(false);
     }
