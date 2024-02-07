@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import Draggable from "react-draggable";
 
-function Note({ note, index, setMode, notes, setNotes }) {
+function Note({ note, setMode, notes, setNotes }) {
   const [visible, setVisible] = useState(false);
   const [clickable, setClickable] = useState(true);
 
@@ -33,14 +33,14 @@ function Note({ note, index, setMode, notes, setNotes }) {
           onMouseEnter={() => setMode(false)}
           onMouseLeave={() => setMode(true)}
           onClick={handleClick}
-          className="note-box-number"
+          className="note-title"
           style={{
             position: "absolute",
             cursor: "pointer",
             "--color": note.color,
           }}
         >
-          {index + 1}
+          {note.noteTitle}
 
           {visible && <div className="note">{note.note}</div>}
         </div>
@@ -59,7 +59,6 @@ Note.propTypes = {
     color: PropTypes.string.isRequired,
     note: PropTypes.string.isRequired,
   }).isRequired,
-  index: PropTypes.number.isRequired,
   setMode: PropTypes.func.isRequired,
   notes: PropTypes.arrayOf(
     PropTypes.shape({
@@ -70,6 +69,7 @@ Note.propTypes = {
       }),
       color: PropTypes.string.isRequired,
       note: PropTypes.string.isRequired,
+      noteTitle: PropTypes.string.isRequired,
     })
   ).isRequired,
   setNotes: PropTypes.func.isRequired,

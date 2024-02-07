@@ -21,6 +21,7 @@ const noteTypes = [
 function NoteAddBox({ boxPosition, setMode, notes, setNotes, setBoxVisible }) {
   const [color, setColor] = useState(noteTypes[0].color);
   const [note, setNote] = useState("");
+  const [noteTitle, setNoteTitle] = useState("");
 
   const changeColor = (e) => {
     setColor(e.target.value);
@@ -31,6 +32,7 @@ function NoteAddBox({ boxPosition, setMode, notes, setNotes, setBoxVisible }) {
     const newNote = {
       id: nanoid(),
       note,
+      noteTitle,
       color,
       position: {
         x: boxPosition.x - 20,
@@ -64,13 +66,18 @@ function NoteAddBox({ boxPosition, setMode, notes, setNotes, setBoxVisible }) {
           </option>
         ))}
       </select>
+      <input
+        onChange={(e) => setNoteTitle(e.target.value)}
+        value={noteTitle}
+        placeholder="Title"
+      />
       <textarea
         value={note}
         onChange={(e) => setNote(e.target.value)}
         placeholder="Enter note"
         rows="10"
       ></textarea>
-      <button onClick={addNote}>Ekle</button>
+      <button onClick={addNote}>Add</button>
     </div>
   );
 }

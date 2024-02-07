@@ -62,16 +62,11 @@ function App() {
       onKeyUp={handleKeyUp}
       onClick={handleClick}
     >
-      <img
-        src="https://images.unsplash.com/photo-1550475966-70af27831597?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        alt=""
-      />
       {mode && <MouseFollowerText position={mousePosition} />}
 
-      {notes.map((note, index) => (
+      {notes.map((note) => (
         <Note
           key={note.id}
-          index={index}
           note={note}
           setMode={setMode}
           notes={notes}
