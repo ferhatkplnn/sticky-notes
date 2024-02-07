@@ -36,6 +36,7 @@ img {
 }
 
 .note {
+  position: relative;
   background-color: var(--color);
   padding: 5px 10px;
   border-radius: 5px;
@@ -45,6 +46,22 @@ img {
   min-width: 300px;
   padding: 12px;
   text-align: center;
+}
+.note-title:hover {
+  filter: brightness(120%);
+}
+
+.del-btn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: transparent;
+  color: rgba(212, 212, 212, 0.968);
+  cursor: pointer;
+  transition: all 0.15s ease-in;
+}
+.del-btn:hover {
+  color: red;
 }
 
 .note-box {
