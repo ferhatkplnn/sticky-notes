@@ -12,15 +12,12 @@ function Note({ note, index, setMode, notes, setNotes }) {
     }
   };
 
-  const setNotePosition = (e, data) => {
-    console.log(e);
-    let newNotes = notes.map((n) => {
-      if (n.id === note.id) {
-        return { ...n, position: { x: e.pageX - 20, y: e.pageY - 25 } };
-      }
-      return n;
-    });
-    console.log(newNotes);
+  const setNotePosition = (e) => {
+    const newNotes = notes.map((n) =>
+      n.id === note.id
+        ? { ...n, position: { x: e.pageX - 20, y: e.pageY - 25 } }
+        : n
+    );
     setNotes(newNotes);
   };
 
@@ -58,10 +55,24 @@ Note.propTypes = {
     position: PropTypes.shape({
       y: PropTypes.number.isRequired,
       x: PropTypes.number.isRequired,
-    }),
+    }).isRequired,
     color: PropTypes.string.isRequired,
     note: PropTypes.string.isRequired,
-  }),
+  }).isRequired,
+  index: PropTypes.number.isRequired,
+  setMode: PropTypes.func.isRequired,
+  notes: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      position: PropTypes.shape({
+        y: PropTypes.number.isRequired,
+        x: PropTypes.number.isRequired,
+      }),
+      color: PropTypes.string.isRequired,
+      note: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  setNotes: PropTypes.func.isRequired,
 };
 
 export default Note;

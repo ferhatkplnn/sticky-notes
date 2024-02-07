@@ -1,22 +1,20 @@
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import "./App.css";
-import { useEffect } from "react";
-import { useState } from "react";
 import MouseFollowerText from "./components/MouseFollowerText";
 import Note from "./components/Note";
 import NoteAddBox from "./components/NoteAddBox";
 
-const initialNote = JSON.parse(localStorage.getItem("notes")) || [];
+const initialNotes = JSON.parse(localStorage.getItem("notes")) || [];
 
 function App() {
   const screen = useRef(null);
   const [mode, setMode] = useState(false);
-  const [notes, setNotes] = useState(initialNote);
+  const [notes, setNotes] = useState(initialNotes);
   const [mousePosition, setMousePosition] = useState({
     x: 0,
     y: 0,
   });
-  const [boxPostion, setBoxPostion] = useState({
+  const [boxPosition, setBoxPosition] = useState({
     x: 0,
     y: 0,
   });
@@ -35,7 +33,7 @@ function App() {
       setMode(!mode);
       setBoxVisible(false);
     }
-    console.log(e.key);
+
     if (e.key === "Escape") {
       setBoxVisible(false);
     }
@@ -48,7 +46,7 @@ function App() {
   const handleClick = () => {
     if (!mode) return;
 
-    setBoxPostion({
+    setBoxPosition({
       x: mousePosition.x[0],
       y: mousePosition.y[0],
     });
@@ -70,22 +68,20 @@ function App() {
       />
       {mode && <MouseFollowerText position={mousePosition} />}
 
-      {notes.map((note, index) => {
-        return (
-          <Note
-            key={note.id}
-            index={index}
-            note={note}
-            setMode={setMode}
-            notes={notes}
-            setNotes={setNotes}
-          />
-        );
-      })}
+      {notes.map((note, index) => (
+        <Note
+          key={note.id}
+          index={index}
+          note={note}
+          setMode={setMode}
+          notes={notes}
+          setNotes={setNotes}
+        />
+      ))}
 
       {boxVisible && (
         <NoteAddBox
-          boxPostion={boxPostion}
+          boxPosition={boxPosition}
           setMode={setMode}
           notes={notes}
           setNotes={setNotes}

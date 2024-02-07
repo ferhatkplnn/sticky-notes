@@ -10,15 +10,15 @@ function MouseFollowerText({ position }) {
         left: position.x[1] + 15,
       }}
     >
-      Yorum yazmak icin tikla
+      Click to leave a comment
     </div>
   );
 }
 
 MouseFollowerText.propTypes = {
   position: PropTypes.shape({
-    x: PropTypes.number.isRequired,
-    y: PropTypes.number.isRequired,
+    x: PropTypes.array.isRequired,
+    y: PropTypes.array.isRequired,
   }).isRequired,
 };
 export default MouseFollowerText;

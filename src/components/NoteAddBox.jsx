@@ -18,7 +18,7 @@ const noteTypes = [
     text: "Note",
   },
 ];
-function NoteBox({ boxPostion, setMode, notes, setNotes, setBoxVisible }) {
+function NoteAddBox({ boxPosition, setMode, notes, setNotes, setBoxVisible }) {
   const [color, setColor] = useState(noteTypes[0].color);
   const [note, setNote] = useState("");
 
@@ -31,10 +31,10 @@ function NoteBox({ boxPostion, setMode, notes, setNotes, setBoxVisible }) {
     const newNote = {
       id: nanoid(),
       note,
-      color: color,
+      color,
       position: {
-        x: boxPostion.x - 20,
-        y: boxPostion.y - 20,
+        x: boxPosition.x - 20,
+        y: boxPosition.y - 20,
       },
     };
 
@@ -52,15 +52,15 @@ function NoteBox({ boxPostion, setMode, notes, setNotes, setBoxVisible }) {
       style={{
         "--color": color,
         position: "absolute",
-        top: boxPostion.y + 10,
-        left: boxPostion.x + 20,
+        top: boxPosition.y + 10,
+        left: boxPosition.x + 20,
       }}
     >
       <span className="note-box-number">{notes.length + 1}</span>
       <select onChange={changeColor}>
-        {noteTypes.map((type, index) => (
-          <option key={index} value={type.color}>
-            {type.text}
+        {noteTypes.map(({ text, color }, index) => (
+          <option key={index} value={color}>
+            {text}
           </option>
         ))}
       </select>
@@ -75,4 +75,4 @@ function NoteBox({ boxPostion, setMode, notes, setNotes, setBoxVisible }) {
   );
 }
 
-export default NoteBox;
+export default NoteAddBox;
