@@ -29,7 +29,7 @@ function App() {
     <div
       ref={screen}
       tabIndex={0}
-      className="screen"
+      className={`screen  ${mode ? "editable" : ""}`}
       onMouseMove={handleMouseMove}
       onKeyUp={handleKeyUp}
     >
@@ -37,7 +37,7 @@ function App() {
         src="https://images.unsplash.com/photo-1550475966-70af27831597?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         alt=""
       />
-      <MouseFollowerText position={position} />
+      {mode && <MouseFollowerText position={position} />}
 
       {mode && <div>Comment Mode</div>}
     </div>
