@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { nanoid } from "nanoid";
+import PropTypes from "prop-types";
 
 const noteTypes = [
   {
@@ -81,5 +82,16 @@ function NoteAddBox({ boxPosition, setMode, notes, setNotes, setBoxVisible }) {
     </div>
   );
 }
+
+NoteAddBox.propTypes = {
+  boxPosition: PropTypes.shape({
+    x: PropTypes.number,
+    y: PropTypes.number,
+  }),
+  setMode: PropTypes.func,
+  notes: PropTypes.array,
+  setNotes: PropTypes.func,
+  setBoxVisible: PropTypes.func,
+};
 
 export default NoteAddBox;

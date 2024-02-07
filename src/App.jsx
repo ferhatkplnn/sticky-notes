@@ -71,6 +71,7 @@ function App() {
           setMode={setMode}
           notes={notes}
           setNotes={setNotes}
+          mousePosition={mousePosition}
         />
       ))}
 
@@ -83,6 +84,8 @@ function App() {
           setBoxVisible={setBoxVisible}
         />
       )}
+
+      <div style={{ color: "white" }}>Press the "c" key to add a Note.</div>
     </div>
   );
 }
