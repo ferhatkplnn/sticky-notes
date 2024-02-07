@@ -6,20 +6,12 @@ import MouseFollowerText from "./components/MouseFollowerText";
 import Note from "./components/Note";
 import NoteAddBox from "./components/NoteAddBox";
 
+const initialNote = JSON.parse(localStorage.getItem("notes")) || [];
+
 function App() {
   const screen = useRef(null);
   const [mode, setMode] = useState(false);
-  const [notes, setNotes] = useState([
-    {
-      id: "1",
-      note: "bu bir test note dur",
-      color: "red",
-      position: {
-        x: 300,
-        y: 300,
-      },
-    },
-  ]);
+  const [notes, setNotes] = useState(initialNote);
   const [mousePosition, setMousePosition] = useState({
     x: 0,
     y: 0,
@@ -33,6 +25,10 @@ function App() {
   useEffect(() => {
     screen.current.focus();
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("notes", JSON.stringify(notes));
+  }, [notes]);
 
   const handleKeyUp = (e) => {
     if (e.key === "c") {

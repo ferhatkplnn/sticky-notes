@@ -4,13 +4,19 @@ import Draggable from "react-draggable";
 
 function Note({ note, index, setMode }) {
   const [visible, setVisible] = useState(false);
+  const [clickable, setClickable] = useState(true);
 
   const handleClick = () => {
-    setVisible(!visible);
+    if (clickable) {
+      setVisible(!visible);
+    }
   };
   return (
     <>
-      <Draggable>
+      <Draggable
+        onDrag={() => setClickable(false)}
+        onStart={() => setClickable(true)}
+      >
         <div
           onMouseEnter={() => setMode(false)}
           onMouseLeave={() => setMode(true)}
