@@ -69,7 +69,14 @@ function App() {
 
       {notes.map((note, index) => {
         return (
-          <Note key={note.id} index={index} note={note} setMode={setMode} />
+          <Note
+            key={note.id}
+            index={index}
+            note={note}
+            setMode={setMode}
+            notes={notes}
+            setNotes={setNotes}
+          />
         );
       })}
 

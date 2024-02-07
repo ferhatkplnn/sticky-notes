@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import Draggable from "react-draggable";
 
-function Note({ note, index, setMode }) {
+function Note({ note, index, setMode, notes, setNotes }) {
   const [visible, setVisible] = useState(false);
   const [clickable, setClickable] = useState(true);
 
@@ -11,11 +11,26 @@ function Note({ note, index, setMode }) {
       setVisible(!visible);
     }
   };
+
+  const setNotePosition = (e, data) => {
+    console.log(e);
+    let newNotes = notes.map((n) => {
+      if (n.id === note.id) {
+        return { ...n, position: { x: e.pageX - 20, y: e.pageY - 25 } };
+      }
+      return n;
+    });
+    console.log(newNotes);
+    setNotes(newNotes);
+  };
+
   return (
     <>
       <Draggable
         onDrag={() => setClickable(false)}
         onStart={() => setClickable(true)}
+        onStop={setNotePosition}
+        position={note.position}
       >
         <div
           onMouseEnter={() => setMode(false)}
@@ -25,8 +40,6 @@ function Note({ note, index, setMode }) {
           style={{
             position: "absolute",
             cursor: "pointer",
-            top: note.position.y - 30,
-            left: note.position.x - 40,
             "--color": note.color,
           }}
         >

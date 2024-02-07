@@ -33,8 +33,8 @@ function NoteBox({ boxPostion, setMode, notes, setNotes, setBoxVisible }) {
       note,
       color: color,
       position: {
-        x: boxPostion.x + 20,
-        y: boxPostion.y + 10,
+        x: boxPostion.x - 20,
+        y: boxPostion.y - 20,
       },
     };
 

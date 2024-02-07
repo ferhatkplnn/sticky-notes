@@ -15,7 +15,11 @@ body {
   position: fixed;
   inset: 0;
   background: red;
-  overflow: auto;
+  overflow: hidden;
+}
+
+img {
+  width: 100%;
 }
 
 .screen.editable {
