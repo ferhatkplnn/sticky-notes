@@ -12,14 +12,12 @@ body {
   font-weight: 600;
 }
 .screen {
-  position: fixed;
-  inset: 0;
-  background: red;
-  overflow: hidden;
+  overflow: auto;
+  overflow-x: hidden;
 }
 
 img {
-  width: 100%;
+  /* width: 100%; */
 }
 
 .screen.editable {

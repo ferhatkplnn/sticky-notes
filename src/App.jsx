@@ -36,18 +36,22 @@ function App() {
       setMode(!mode);
       setBoxVisible(false);
     }
+    console.log(e.key);
+    if (e.key === "Escape") {
+      setBoxVisible(false);
+    }
   };
 
   const handleMouseMove = (e) => {
-    setMousePosition({ x: e.pageX, y: e.pageY });
+    setMousePosition({ x: [e.pageX, e.clientX], y: [e.pageY, e.clientY] });
   };
 
   const handleClick = () => {
     if (!mode) return;
 
     setBoxPostion({
-      x: mousePosition.x,
-      y: mousePosition.y,
+      x: mousePosition.x[0],
+      y: mousePosition.y[0],
     });
     setBoxVisible(true);
   };

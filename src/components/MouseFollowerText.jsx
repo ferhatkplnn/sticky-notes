@@ -4,7 +4,11 @@ function MouseFollowerText({ position }) {
   return (
     <div
       className="mouse-follower-text"
-      style={{ position: "fixed", top: position.y, left: position.x + 15 }}
+      style={{
+        position: "fixed",
+        top: position.y[1],
+        left: position.x[1] + 15,
+      }}
     >
       Yorum yazmak icin tikla
     </div>
