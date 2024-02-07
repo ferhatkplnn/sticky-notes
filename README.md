@@ -10,7 +10,7 @@ Sticky Notes is a simple React application that allows users to add notes to the
 - Choose different colors for your notes.
 - Simple and intuitive user interface.
 
-##Usage
+## Usage
 - Press the 'C' key on your keyboard.
 - Click anywhere on the screen to add a note.
 - Choose a color for your note.
