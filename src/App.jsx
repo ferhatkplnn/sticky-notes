@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import MouseFollowerText from "./components/MouseFollowerText";
 import Note from "./components/Note";
-import NoteBox from "./components/NoteBox";
+import NoteAddBox from "./components/NoteAddBox";
 function App() {
   const screen = useRef(null);
   const [mode, setMode] = useState(false);
@@ -75,7 +75,7 @@ function App() {
       })}
 
       {boxVisible && (
-        <NoteBox
+        <NoteAddBox
           boxPostion={boxPostion}
           setMode={setMode}
           notes={notes}
